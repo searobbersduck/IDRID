@@ -1,0 +1,3 @@
+[submodule "lib/whole_seg"]
+	path = lib/whole_seg
+	url = https://github.com/searobbersduck/RetinalImagesVesselExtraction.git
