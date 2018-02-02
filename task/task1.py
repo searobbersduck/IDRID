@@ -29,13 +29,14 @@ for index in raw_list:
 
     raw_img = cv2.imread(os.path.join(raw_root, index+'.jpg'))
 
-    cnt_array = np.zeros(raw_img.shape[0:2], dtype=np.uint8)
+    cnt_array = np.ones(raw_img.shape[0:2], dtype=np.uint8)
     bg_array = np.zeros(raw_img.shape[0:2], dtype=np.uint16)
 
     for file in file_list:
         if not os.path.exists(file):
             continue
         img = cv2.imread(file)
-        bg_array += img[:,:,0]
+        bg_array += img[:,:,2]
 
+    # print(img[:,:,2].max())
     print(bg_array.max())
