@@ -19,10 +19,10 @@ def metric_seg(pred_label, gt_label):
                 if gt_label[i][j] == 255:
                     tp_cnt += 1
                 else:
-                    fn_cnt += 1
+                    fp_cnt += 1
             else:
                 if gt_label[i][j] == 255:
-                    fp_cnt += 1
+                    fn_cnt += 1
                 else:
                     tn_cnt += 1
     sensitivity = 0
@@ -38,7 +38,14 @@ def metric_seg(pred_label, gt_label):
         f1 = -1
     else:
         f1 = 2 * tp_cnt / (2 * tp_cnt + fp_cnt + fn_cnt)
-    return sensitivity, specificity, f1
+
+    ppv = 0
+    if (tp_cnt+fp_cnt) == 0:
+        ppv = -1
+    else:
+        ppv = tp_cnt/(tp_cnt+fp_cnt)
+
+    return sensitivity, specificity, f1, ppv
 
 def test_metric_seg():
     pred_img_file = '/home/weidong/code/kaggle/IDRID/data/IDRID/IDRID 1/preprocessed/EX/ahe_mask/IDRiD_02_ahe_mask.png'

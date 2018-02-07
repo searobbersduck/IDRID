@@ -35,20 +35,22 @@ for i in gt_list:
     if i in pred_list:
         exist_list.append(i)
 
-df = pd.DataFrame(columns=['image', 'sn', 'sp', 'f1'])
+df = pd.DataFrame(columns=['image', 'sn', 'sp', 'f1 score', 'ppv'])
 
 for i in exist_list:
     gt_file = os.path.join(root_gt, '{}_{}.png'.format(i, args.cat))
     pred_file = os.path.join(root_pred, '{}_pred.png'.format(i))
     pred_img = cv2.imread(pred_file)
     gt_img = cv2.imread(gt_file)
-    s1, s2, f = metric_seg(pred_img[:, :, 2], gt_img[:, :, 2])
+    s1, s2, f, ppv = metric_seg(pred_img[:, :, 2], gt_img[:, :, 2])
     dict = {}
     dict['image'] = i
     dict['sn'] = round(s1, 4)
     dict['sp'] = round(s2, 4)
     dict['f1 score'] = round(f, 4)
+    dict['ppv'] = round(ppv, 4)
     df = df.append(dict, ignore_index=True)
-    print('sensitivity: {}\t specificity: {}\t f1 score: {}\t'.format(round(s1,4), round(s2,4), round(f,4)))
+    print('sensitivity: {}\t specificity: {}\t f1 score: {}\tppv: {}'.format(
+        round(s1,4), round(s2,4), round(f,4), round(ppv, 4)))
 
 df.to_csv(os.path.join(root_sub, 'metric_info.csv'))
