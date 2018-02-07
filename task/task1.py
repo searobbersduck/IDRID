@@ -17,9 +17,9 @@ raw_list = [os.path.basename(i).split('.')[0] for i in raw_list]
 
 for index in raw_list:
     ex_file = os.path.join(ex_root, '{}_EX.tif'.format(index))
-    he_file = os.path.join(ex_root, '{}_HE.tif'.format(index))
-    ma_file = os.path.join(ex_root, '{}_MA.tif'.format(index))
-    se_file = os.path.join(ex_root, '{}_SE.tif'.format(index))
+    he_file = os.path.join(he_root, '{}_HE.tif'.format(index))
+    ma_file = os.path.join(ma_root, '{}_MA.tif'.format(index))
+    se_file = os.path.join(se_root, '{}_SE.tif'.format(index))
 
     file_list = []
     file_list.append(ex_file)
