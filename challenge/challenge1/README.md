@@ -22,3 +22,6 @@
 * show_mask.py
     * 将不同分割结果的mask，拼到一张图像上进行显示，看相互之间是否有重合区域
     * 若无重合区域，可以在一个网络中直接输出四种分割效果（EX/HE/MA/SE）
+* mix_label.py
+    * 将不同病灶的label，综合到一张mask上
+    * label的对应关系分别为：ex: 1,he: 2,ma: 3,se: 4

@@ -1,0 +1,13 @@
+# 文件功能记录
+* crop_and_rescale_img.py
+    * 提供crop以及自适应直方图增强（ahe）的基础功能
+* gen_input_data.py
+    * 预处理生成用于视盘分割的数据
+    * 在challenge3文件夹下的ahe和ahe_mask的两个子文件夹
+    * 这个文件应该放在challenge3目录下，放在此处不恰当
+* gen_test_data.py
+    * 预处理生成用于视盘分割的测试数据
+    * 在challenge3文件夹下的test文件夹下
+    * 这个文件应该放在challenge3目录下，放在此处不恰当
+* idrid_metrics.py
+    * 提供该项目需要的各种metric功能
